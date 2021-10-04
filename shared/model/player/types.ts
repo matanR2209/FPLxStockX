@@ -68,6 +68,17 @@ export interface IPlayer {
     "penalties_text": string,
 }
 
+export interface IPlayerStatsHistory {
+    points: IStatsHistory[],
+    transferIn: IStatsHistory[],
+    transferOut: IStatsHistory[]
+}
+
+export interface IStatsHistory {
+    amount: number,
+    date: number
+}
+
 export interface IPlayerStats {
     id: number;
     currentPrice: number;
