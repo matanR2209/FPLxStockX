@@ -33,7 +33,7 @@ function Graph(props: IProps) {
             <Chart
                 width={'600px'}
                 height={'400px'}
-                chartType="LineChart"
+                chartType="AreaChart"
                 loader={<div>Loading Chart</div>}
                 data={generateData()}
                 options={{

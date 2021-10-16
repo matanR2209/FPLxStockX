@@ -1,12 +1,17 @@
 import React from "react";
 import GraphView from "./views/GraphView/GraphView";
-import PlayerInfoView from "./views/PlayerInfoView/PlayerInfoView";
+import RelatedPlayersSliderContainer from "./views/RelatedPlayersView/RelatedPlayersSliderContainer";
+import PlayerInfoContainer from "./views/PlayerInfoView/PlayerInfoContainer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{
+        backgroundColor: "#f6f6f6",
+        height: "100vh",
+    }}>
+        <PlayerInfoContainer/>
         <GraphView/>
-        <PlayerInfoView/>
+        <RelatedPlayersSliderContainer/>
     </div>
   );
 }

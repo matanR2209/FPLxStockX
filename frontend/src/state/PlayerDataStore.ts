@@ -1,4 +1,3 @@
-import { observable } from "mobx";
 import PlayerDataApiService from "../services/API/PlayerDataApiService";
 import {FPLSResponse} from "../shared/network";
 

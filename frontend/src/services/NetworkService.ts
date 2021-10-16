@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, AxiosRequestConfig } from "axios";
+import axios, { AxiosPromise } from "axios";
 import * as qs from "qs";
 
 export class NetworkService {
