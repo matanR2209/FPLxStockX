@@ -9,7 +9,12 @@ interface IProps {
 }
 
 const styles = (theme: Theme) => ({
-    root: {}
+    graphContainer: {
+        display: "flex",
+        margin: "0 auto",
+        width: "70%"
+
+    }
 });
 
 function Graph(props: IProps) {
@@ -29,10 +34,10 @@ function Graph(props: IProps) {
     }
 
     return (
-        <div className={classes.root}>
+        <div className={classes.graphContainer}>
             <Chart
-                width={'600px'}
-                height={'400px'}
+                width={"100%"}
+                height={"100%"}
                 chartType="AreaChart"
                 loader={<div>Loading Chart</div>}
                 data={generateData()}
@@ -43,6 +48,8 @@ function Graph(props: IProps) {
                     vAxis: {
                         title: 'Amount ( transfares are in K)',
                     },
+                    legend: { position: 'bottom', alignment: 'start' },
+
                 }}
             />
         </div>
