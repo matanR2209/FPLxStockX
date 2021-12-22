@@ -35,7 +35,7 @@ function SideBarMenu(props: IProps) {
     return (
         <div className={classes.container}>
             <div className={classes.sideMenu}>
-                <div className={classes.header}>Side menu</div>
+                <div className={classes.header}>TODO: Side menu</div>
             </div>
         </div>
     );

@@ -26,7 +26,6 @@ function Graph(props: IProps) {
            const graphEntry = [ new Date(playerStats.transferIn[index].date * 1000) , playerStats.transferIn[index].amount / 1000, playerStats.transferOut[index].amount / 1000, playerStats.points[index].amount]
             res.push(graphEntry)
         });
-        console.log(res);
         return [
             ['date', 'Transfer in', 'transfer out', "points"],
             ...res

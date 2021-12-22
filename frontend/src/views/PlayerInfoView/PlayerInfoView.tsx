@@ -17,7 +17,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         backgroundColor: "#FFF",
         display: "flex",
         flexDirection: "column",
-        width: "25%",
         height: "fit-content"
     },
     playerBio: {
@@ -80,40 +79,57 @@ function PlayerInfoView(props: IProps) {
      return <div className={classes.sectionData} style={{color: trend < 0 ? "#FA2D00" : "#43D00A"}}>{trend}%</div>
     }
 
+    const renderPlayerBio  = () => {
+        return (<div className={classes.playerBio}>
+            <div className={classes.playerName}>{player.first_name} {player.second_name}</div>
+            <div className={classes.playerRole}>{`Position: ${player.element_type}`}</div>
+            <div className={classes.playerTeam}>{`Team: ${player.team_code}`}</div>
+        </div>)
+    }
+
+    const renderPlayerImage = () => {
+        return (<div>
+            <img alt={player.web_name} style={{height: "6em"}} src={`https://resources.premierleague.com/premierleague/photos/players/110x140/p${player.code}.png`}/>
+        </div>)
+    }
+
+    const renderPlayerData = () => {
+        return <div className={classes.playerDataSection}>
+            <div className={classes.section}>
+                <div className={classes.dataHeader}>Owned by(%):</div>
+                <div className={classes.sectionData}>{player.selected_by_percent} %</div>
+            </div>
+            <div className={classes.section}>
+                <div className={classes.dataHeader}>Transfer in:</div>
+                <div className={classes.sectionData}>{player.transfers_in_event} %</div>
+            </div>
+            <div className={classes.section}>
+                <div className={classes.dataHeader}>Transfer out:</div>
+                <div className={classes.sectionData}>{player.transfers_out_event} %</div>
+            </div>
+            <div className={classes.section}>
+                <div className={classes.dataHeader}>Trend (%):</div>
+                {renderTrend()}
+            </div>
+        </div>
+    }
+
+    const renderPlayerSummary = () => {
+        return (
+            <div className={classes.summary}>
+            <div className={classes.dataHeader}>Total owners:</div>
+            <div className={classes.sectionData}>????</div>
+        </div>)
+    }
+
     return (
         <div className={classes.root}>
             <div className={classes.header}>
-                <div>
-                    <img alt={player.web_name} style={{height: "6em"}} src={`https://resources.premierleague.com/premierleague/photos/players/110x140/p${player.code}.png`}/>
-                </div>
-                <div className={classes.playerBio}>
-                    <div className={classes.playerName}>{player.first_name} {player.second_name}</div>
-                    <div className={classes.playerRole}>{`Position: ${player.element_type}`}</div>
-                    <div className={classes.playerTeam}>{`Team: ${player.team_code}`}</div>
-                </div>
+                {renderPlayerImage()}
+                {renderPlayerBio()}
             </div>
-            <div className={classes.playerDataSection}>
-                <div className={classes.section}>
-                    <div className={classes.dataHeader}>Owned by(%):</div>
-                    <div className={classes.sectionData}>{player.selected_by_percent} %</div>
-                </div>
-                <div className={classes.section}>
-                    <div className={classes.dataHeader}>Transfer in:</div>
-                    <div className={classes.sectionData}>{player.transfers_in_event} %</div>
-                </div>
-                <div className={classes.section}>
-                    <div className={classes.dataHeader}>Transfer out:</div>
-                    <div className={classes.sectionData}>{player.transfers_out_event} %</div>
-                </div>
-                <div className={classes.section}>
-                    <div className={classes.dataHeader}>Trend (%):</div>
-                    {renderTrend()}
-                </div>
-            </div>
-            <div className={classes.summary}>
-                <div className={classes.dataHeader}>Total owners:</div>
-                <div className={classes.sectionData}>????</div>
-            </div>
+            {renderPlayerData()}
+            {renderPlayerSummary()}
         </div>
     );
 }

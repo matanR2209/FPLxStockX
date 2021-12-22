@@ -2,11 +2,12 @@ import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
 import "react-multi-carousel/lib/styles.css";
-import PlayerInfoContainer from "../PlayerInfoView/PlayerInfoContainer";
 import GraphView from "../GraphView/GraphView";
 import WatchlistContainer from "../WatchlistView/WatchlistContainer";
 import TrendingPlayers from "../Trending/TrendingPlayers";
 import TRENDING_PLAYERS from "../../assets/FIXTURES";
+import PlayerInfoView from "../PlayerInfoView/PlayerInfoView";
+import PlayerSelectionControl from "../PlayerSelectionControl/PlayerSelectionControl";
 
 interface IProps {
     classes: any;
@@ -55,8 +56,9 @@ function AppContent(props: IProps) {
         <div className={classes.container}>
             <div className={classes.content}>
                 <div className={classes.leftSection}>
+                    <PlayerSelectionControl/>
                     <div className={classes.leftSectionTopRow}>
-                        <PlayerInfoContainer/>
+                        <PlayerInfoView player={TRENDING_PLAYERS[0]}/>
                         <GraphView/>
                     </div>
                     <div className={classes.leftSectionBottomRow}>

@@ -1,18 +1,22 @@
+import * as React from "react";
 import {
     MenuItem,
     StyleRulesCallback,
     TextField,
     Theme,
-    WithStyles,
     withStyles
 } from "@material-ui/core";
-import * as React from "react";
+
+export interface ISelectItem {
+ label: string,
+ value: any;
+}
 
 interface IProps {
     classes: any;
     value: string;
     onChange: (change: string ) => void;
-    items: any[];
+    items: ISelectItem[];
 }
 
 const styles: StyleRulesCallback<Theme, {}> = (theme: Theme) => ({
@@ -66,7 +70,7 @@ function FPLSSelect(props: IProps){
                         key={option.value}
                         value={option.value}
                     >
-                        {option.displayString}
+                        {option.label}
                     </MenuItem>
                 ))}
             </TextField>

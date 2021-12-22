@@ -11,7 +11,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({});
 
 function WatchlistContainer(props: IProps) {
     const { classes } = props;
-
     const playersDummy = [
         {
             "chance_of_playing_next_round": null,
@@ -431,14 +430,10 @@ function WatchlistContainer(props: IProps) {
 
     return (
         <div className={classes.root}>
-           <PlayerWatchlistView player={playersDummy[0]}/>
-           <PlayerWatchlistView player={playersDummy[1]}/>
-           <PlayerWatchlistView player={playersDummy[2]}/>
-           <PlayerWatchlistView player={playersDummy[3]}/>
-           <PlayerWatchlistView player={playersDummy[4]}/>
-           <PlayerWatchlistView player={playersDummy[5]}/>
+            {playersDummy.map(player =><PlayerWatchlistView player={player}/> )}
         </div>
     );
 }
+
 
 export default withStyles(styles)(WatchlistContainer);

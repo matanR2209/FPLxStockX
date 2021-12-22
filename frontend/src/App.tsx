@@ -2,7 +2,7 @@ import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
 import SideBarMenu from "./components/SideBarMenu";
-import AppContentContainer from "./views/AppContent/AppContentContainer";
+import AppContent from "./views/AppContent/AppContent";
 
 interface IProps {
     classes: any;
@@ -35,19 +35,8 @@ function App(props: IProps) {
     return (
         <div className={classes.container}>
             <SideBarMenu></SideBarMenu>
-            <AppContentContainer/>
+            <AppContent/>
         </div>
-    // <div className={classes.appContainer} >
-    //     <div className={classes.topSectionContainer}>
-    //
-    //         <div className={classes.searchArea}>
-    //             <SearchAreaContainer/>
-    //         </div>
-    //     </div>
-    //
-    //     >
-    //     <RelatedPlayersSliderContainer/>
-    // </div>
   );
 }
 

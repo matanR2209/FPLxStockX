@@ -71,31 +71,11 @@ export interface IPlayer {
 export interface IPlayerStatsHistory {
     points: IStatsHistory[],
     transferIn: IStatsHistory[],
-    transferOut: IStatsHistory[]
+    transferOut: IStatsHistory[],
+    totalOwners: IStatsHistory[]
 }
 
 export interface IStatsHistory {
     amount: number,
     date: number
-}
-
-export interface IPlayerStats {
-    id: number;
-    currentPrice: number;
-    currentOwnership: number;
-    ownersHistory: IOwnerHistory[];
-    currentPointsCount: number
-    pointsCountHistory: IPointHistory
-}
-
-export interface IOwnerHistory {
-    date: Date;
-    owners: number;
-    gameweek: any // todo - create gameweek interface
-}
-
-export interface IPointHistory {
-    gameweek: any // todo - create gameweek interface
-    pointsPerGameweek: number;
-    totalPoints: number;
 }
