@@ -5,6 +5,7 @@ import {stores} from "../../state";
 import {Observer} from "mobx-react";
 import ColorsPalette from "../../assets/Colors";
 import Utils from "../../Utils/Utils";
+import PlayerInfoDataRow from "../../components/PlayerInfoDataRow";
 
 interface IProps {
     classes: any
@@ -12,6 +13,13 @@ interface IProps {
 
 const PLAYER_DIALOG_BG = "https://fantasy.premierleague.com/static/media/eiw-bg-m.6f402e5a.svg"
 
+const INFO_VIEW_HEADERS = {
+    OWNED_BY: "Owned by(%): ",
+    TRANSFER_IN: "Transfer in: ",
+    TRANSFER_OUT: "Transfer out: ",
+    TREND: "Trend (%): ",
+    TOTAL_OWNERS: "Total owners: "
+}
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     root: {
@@ -51,17 +59,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     playerTeam: {
         color: "white",
     },
-    section: {
-        marginBottom: "1em"
-    },
-    dataHeader: {
-        fontSize: 14,
-        color: ColorsPalette.black
-    },
-    sectionData: {
-        fontSize: 22,
-        fontWeight: 600
-    },
     playerDataSection: {
         padding: "1em",
     },
@@ -99,29 +96,17 @@ function PlayerInfoView(props: IProps) {
 
     const renderPlayerData = () => {
         return <div className={classes.playerDataSection}>
-            <div className={classes.section}>
-                <div className={classes.dataHeader}>Owned by(%):</div>
-                <div className={classes.sectionData}>{playersStore._selectedPlayer.selected_by_percent} %</div>
-            </div>
-            <div className={classes.section}>
-                <div className={classes.dataHeader}>Transfer in:</div>
-                <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_in_event} </div>
-            </div>
-            <div className={classes.section}>
-                <div className={classes.dataHeader}>Transfer out:</div>
-                <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_out_event} </div>
-            </div>
-            <div className={classes.section}>
-                <div className={classes.dataHeader}>Trend (%):</div>
-                {renderTrend()}
-            </div>
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.OWNED_BY} dataValue={`${playersStore._selectedPlayer.selected_by_percent} %`} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_IN} dataValue={playersStore._selectedPlayer.transfers_in_event} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_OUT} dataValue={playersStore._selectedPlayer.transfers_out_event} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TREND} dataValue={renderTrend()}/>
         </div>
     }
 
     const renderPlayerSummary = () => {
         return (
             <div className={classes.summary}>
-            <div>Total owners:</div>
+            <div>{INFO_VIEW_HEADERS.TOTAL_OWNERS}</div>
             <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_in}</div>
         </div>)
     }
