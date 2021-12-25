@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import {Theme } from "@material-ui/core";
 import {IPlayer} from "../../../../shared/model/player/types";
 import ItemsCarousel from "../../components/ItemsCarousel";
-import RelatedPlayerViewItem from "./RelatedPlayerViewItem";
+import CarouselPlayerViewItem from "./CarouselPlayerViewItem";
 
 interface IProps {
     classes: any
@@ -25,7 +25,7 @@ const styles = (theme: Theme) => ({
 
 
 
-function RelatedPlayersSliderContainer(props: IProps) {
+function PlayersSliderContainer(props: IProps) {
     const { classes } = props
 
     const relatedPlayers: IPlayer[] =  [
@@ -584,7 +584,7 @@ function RelatedPlayersSliderContainer(props: IProps) {
     ]
 
     const renderRelatedPlayersView = () => {
-        return relatedPlayers.map(player => <RelatedPlayerViewItem player={player}/>)
+        return relatedPlayers.map(player => <CarouselPlayerViewItem player={player}/>)
     }
 
     return (<div className={classes.container}>
@@ -593,4 +593,4 @@ function RelatedPlayersSliderContainer(props: IProps) {
     </div>)
 }
 
-export default withStyles(styles)(RelatedPlayersSliderContainer);
+export default withStyles(styles)(PlayersSliderContainer);

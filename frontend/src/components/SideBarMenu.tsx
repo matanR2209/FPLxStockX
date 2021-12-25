@@ -2,6 +2,7 @@ import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
 import "react-multi-carousel/lib/styles.css";
+import ColorsPalette from "../assets/Colors";
 
 interface IProps {
     classes: any;
@@ -10,13 +11,13 @@ interface IProps {
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     container: {
         width: "20%",
-        backgroundColor: "#EBEDFF",
+        backgroundColor: ColorsPalette.sideBarContainerBackground,
         display: "flex",
         justifyContent: "end"
     },
     sideMenu: {
-        color: "#FFF",
-        backgroundColor: "#3947B2",
+        color: ColorsPalette.white,
+        backgroundColor: ColorsPalette.sideBarContentBackground,
         borderTopLeftRadius: 25,
         borderBottomLeftRadius: 25,
         margin: "auto 0",
@@ -25,6 +26,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         width: "50%"
     },
     header: {
+        color: ColorsPalette.white,
         fontWeight: "bold"
     }
 });

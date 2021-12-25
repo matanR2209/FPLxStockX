@@ -1,11 +1,13 @@
 import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
-import {IPlayer} from "../../../../shared/model/player/types";
+import {stores} from "../../state";
+import {Observer} from "mobx-react";
+import ColorsPalette from "../../assets/Colors";
+import Utils from "../../Utils/Utils";
 
 interface IProps {
     classes: any
-    player: IPlayer
 }
 
 const PLAYER_DIALOG_BG = "https://fantasy.premierleague.com/static/media/eiw-bg-m.6f402e5a.svg"
@@ -13,8 +15,9 @@ const PLAYER_DIALOG_BG = "https://fantasy.premierleague.com/static/media/eiw-bg-
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     root: {
+        width: "35%",
         borderRadius: 10,
-        backgroundColor: "#FFF",
+        backgroundColor: ColorsPalette.white,
         display: "flex",
         flexDirection: "column",
         height: "fit-content"
@@ -25,7 +28,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         padding: "1em"
     },
     header: {
-        backgroundColor: "#37003c",
+        backgroundColor: ColorsPalette.playerInfoView.purple,
         backgroundImage: `url(${PLAYER_DIALOG_BG})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "12em 15em",
@@ -40,8 +43,8 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         marginBottom: ".3em"
     },
     playerRole: {
-        backgroundColor: "#00ff87",
-        color: "#37003c",
+        backgroundColor: ColorsPalette.playerInfoView.roleBackground,
+        color: ColorsPalette.playerInfoView.purple,
         padding: ".2em",
         marginBottom: ".3em"
     },
@@ -53,7 +56,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     },
     dataHeader: {
         fontSize: 14,
-        color: "#CCCCCC"
+        color: ColorsPalette.black
     },
     sectionData: {
         fontSize: 22,
@@ -63,33 +66,34 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         padding: "1em",
     },
     summary: {
-        backgroundColor: "#37003c",
-        color: "#FFF",
+        backgroundColor: ColorsPalette.playerInfoView.purple,
+        color: ColorsPalette.white,
         padding: ".2em",
         borderRadius: "0 0 .5em .5em",
     }
 });
 
+const playersStore = stores.playersStore;
 
 function PlayerInfoView(props: IProps) {
-    const { classes, player } = props;
+    const { classes } = props;
 
     const renderTrend = () => {
-     const trend = (player.transfers_in_event - player.transfers_out_event) / 100;
-     return <div className={classes.sectionData} style={{color: trend < 0 ? "#FA2D00" : "#43D00A"}}>{trend}%</div>
+     const trend = (playersStore._selectedPlayer.transfers_in_event - playersStore._selectedPlayer.transfers_out_event) / 100;
+     return <div className={classes.sectionData} style={{color: trend < 0 ? ColorsPalette.trendRed : ColorsPalette.trendGreen}}>{trend}%</div>
     }
 
     const renderPlayerBio  = () => {
         return (<div className={classes.playerBio}>
-            <div className={classes.playerName}>{player.first_name} {player.second_name}</div>
-            <div className={classes.playerRole}>{`Position: ${player.element_type}`}</div>
-            <div className={classes.playerTeam}>{`Team: ${player.team_code}`}</div>
+            <div className={classes.playerName}>{playersStore._selectedPlayer.first_name} {playersStore._selectedPlayer.second_name}</div>
+            <div className={classes.playerRole}>{`Position: ${playersStore._selectedPlayer.element_type}`}</div>
+            <div className={classes.playerTeam}>{`Team: ${Utils.getTeamNameById(playersStore._selectedPlayer.team_code)}`}</div>
         </div>)
     }
 
     const renderPlayerImage = () => {
         return (<div>
-            <img alt={player.web_name} style={{height: "6em"}} src={`https://resources.premierleague.com/premierleague/photos/players/110x140/p${player.code}.png`}/>
+            <img alt={playersStore._selectedPlayer.web_name} style={{height: "6em"}} src={`https://resources.premierleague.com/premierleague/photos/players/110x140/p${playersStore._selectedPlayer.code}.png`}/>
         </div>)
     }
 
@@ -97,15 +101,15 @@ function PlayerInfoView(props: IProps) {
         return <div className={classes.playerDataSection}>
             <div className={classes.section}>
                 <div className={classes.dataHeader}>Owned by(%):</div>
-                <div className={classes.sectionData}>{player.selected_by_percent} %</div>
+                <div className={classes.sectionData}>{playersStore._selectedPlayer.selected_by_percent} %</div>
             </div>
             <div className={classes.section}>
                 <div className={classes.dataHeader}>Transfer in:</div>
-                <div className={classes.sectionData}>{player.transfers_in_event} %</div>
+                <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_in_event} </div>
             </div>
             <div className={classes.section}>
                 <div className={classes.dataHeader}>Transfer out:</div>
-                <div className={classes.sectionData}>{player.transfers_out_event} %</div>
+                <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_out_event} </div>
             </div>
             <div className={classes.section}>
                 <div className={classes.dataHeader}>Trend (%):</div>
@@ -117,21 +121,23 @@ function PlayerInfoView(props: IProps) {
     const renderPlayerSummary = () => {
         return (
             <div className={classes.summary}>
-            <div className={classes.dataHeader}>Total owners:</div>
-            <div className={classes.sectionData}>????</div>
+            <div>Total owners:</div>
+            <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_in}</div>
         </div>)
     }
 
-    return (
-        <div className={classes.root}>
-            <div className={classes.header}>
-                {renderPlayerImage()}
-                {renderPlayerBio()}
-            </div>
-            {renderPlayerData()}
-            {renderPlayerSummary()}
-        </div>
+    return (<Observer>
+            {() => {return <div className={classes.root}>
+                <div className={classes.header}>
+                    {renderPlayerImage()}
+                    {renderPlayerBio()}
+                </div>
+                {renderPlayerData()}
+                {renderPlayerSummary()}
+            </div>}}
+        </Observer>
     );
+
 }
 
 export default withStyles(styles)(PlayerInfoView);

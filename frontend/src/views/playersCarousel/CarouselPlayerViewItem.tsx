@@ -2,6 +2,7 @@ import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import { Theme} from "@material-ui/core";
 import {IPlayer} from "../../../../shared/model/player/types";
+import ColorsPalette from "../../assets/Colors";
 
 interface IProps {
     classes: any
@@ -13,9 +14,9 @@ const styles = (theme: Theme) => ({
         padding: "1em",
         borderRadius: 5,
         boxShadow: "0 1px 2px 0 rgba(226, 230, 236, 0.5)",
-        backgroundColor: "#fff",
+        backgroundColor: ColorsPalette.white,
         margin: "auto 1em",
-        color: "#5b5c65",
+        color: ColorsPalette.darkGrey,
         cursor: "pointer",
         "&:hover": {
             transform: "scale(0.8)",
@@ -52,7 +53,7 @@ const styles = (theme: Theme) => ({
 });
 
 
-function RelatedPlayerViewItem(props: IProps) {
+function CarouselPlayerViewItem(props: IProps) {
     const { classes, player } = props;
     return (
         <div className={classes.root}>
@@ -86,4 +87,4 @@ function RelatedPlayerViewItem(props: IProps) {
     );
 }
 
-export default withStyles(styles)(RelatedPlayerViewItem);
+export default withStyles(styles)(CarouselPlayerViewItem);

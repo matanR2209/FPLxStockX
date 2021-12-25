@@ -1,13 +1,15 @@
 import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
-import "react-multi-carousel/lib/styles.css";
-import GraphView from "../GraphView/GraphView";
+import ColorsPalette from "../../assets/Colors";
 import WatchlistContainer from "../WatchlistView/WatchlistContainer";
-import TrendingPlayers from "../Trending/TrendingPlayers";
-import TRENDING_PLAYERS from "../../assets/FIXTURES";
+import TrendingPlayers from "../TrendingView/TrendingPlayers";
 import PlayerInfoView from "../PlayerInfoView/PlayerInfoView";
 import PlayerSelectionControl from "../PlayerSelectionControl/PlayerSelectionControl";
+
+import MainTrendGraphView from "../GraphView/MainTrendGraphView";
+import RelatedPlayers from "../RelatedPlayersView/RelatedPlayers";
+
 
 interface IProps {
     classes: any;
@@ -15,12 +17,14 @@ interface IProps {
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     container: {
-        backgroundColor: "#B2BBFF",
+        backgroundColor: ColorsPalette.containerBackground,
         display: "flex",
-        width: "inherit"
+        width: "inherit",
+        overflowX: "hidden",
+        overflowY: "hidden"
     },
     content: {
-        backgroundColor: "#F4F6F8",
+        backgroundColor: ColorsPalette.contentBackground,
         borderTopRightRadius: 25,
         borderBottomRightRadius: 25,
         margin: "auto 0",
@@ -33,17 +37,17 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     leftSection: {
         display: "flex",
         flexDirection: "column",
-        width: "80%",
-        height: "initial"
+        width: "80%"
     },
     leftSectionTopRow: {
         display: "flex",
         flexDirection: "row",
     },
     leftSectionBottomRow: {
-        marginTop: "1em",
-        height: "inherit",
-        overflowY: "scroll"
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-between"
     },
     rightSection: {
         marginLeft: "1em"
@@ -58,11 +62,12 @@ function AppContent(props: IProps) {
                 <div className={classes.leftSection}>
                     <PlayerSelectionControl/>
                     <div className={classes.leftSectionTopRow}>
-                        <PlayerInfoView player={TRENDING_PLAYERS[0]}/>
-                        <GraphView/>
+                        <PlayerInfoView />
+                        <MainTrendGraphView/>
                     </div>
                     <div className={classes.leftSectionBottomRow}>
-                        <TrendingPlayers trendingPlayers={TRENDING_PLAYERS}/>
+                        <TrendingPlayers/>
+                        <RelatedPlayers/>
                     </div>
                 </div>
                 <div className={classes.rightSection}>

@@ -17,30 +17,31 @@ const styles = (theme: Theme) => ({
     }
 });
 
-function Graph(props: IProps) {
+function MainTrendGraph(props: IProps) {
     const { classes, playerStats } = props;
 
     const generateData = () => {
         const res: any = []
         playerStats.transferOut.forEach((transfer:IStatsHistory, index: number) => {
-           const graphEntry = [ new Date(playerStats.transferIn[index].date * 1000) , playerStats.transferIn[index].amount / 1000, playerStats.transferOut[index].amount / 1000, playerStats.points[index].amount]
+           const graphEntry = [ new Date(playerStats.transferIn[index].date * 1000) , playerStats.transferIn[index].amount, playerStats.transferOut[index].amount, playerStats.points[index].amount, playerStats.totalOwners[index].amount]
             res.push(graphEntry)
         });
         return [
-            ['date', 'Transfer in', 'transfer out', "points"],
+            ['Date', 'Transfer in', 'Transfer out', "Points", "Total owners"],
             ...res
         ]
     }
-
+    console.log(playerStats);
     return (
         <div className={classes.graphContainer}>
             <Chart
                 width={"100%"}
                 height={"100%"}
-                chartType="AreaChart"
+                chartType="LineChart"
                 loader={<div>Loading Chart</div>}
                 data={generateData()}
                 options={{
+                    backgroundColor: 'transparent',
                     hAxis: {
                         title: 'Date',
                     },
@@ -48,11 +49,16 @@ function Graph(props: IProps) {
                         title: 'Amount ( transfares are in K)',
                     },
                     legend: { position: 'bottom', alignment: 'start' },
-
+                    series: {
+                        0: { curveType: 'function' },
+                        1: { curveType: 'function' },
+                        2: { curveType: 'function' },
+                        3: { curveType: 'function' },
+                    },
                 }}
             />
         </div>
     );
 }
 
-export default withStyles(styles)(Graph);
+export default withStyles(styles)(MainTrendGraph);

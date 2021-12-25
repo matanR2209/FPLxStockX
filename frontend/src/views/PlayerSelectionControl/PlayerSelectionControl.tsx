@@ -2,16 +2,15 @@ import React, {useEffect} from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
 import {IPlayer} from "../../../../shared/model/player/types";
-import FPLSSelect, {ISelectItem} from "../../components/FPLSSelect";
+import FPLSSelect  from "../../components/FPLSSelect";
 import {stores} from "../../state";
+import { Observer } from "mobx-react"
+
 
 interface IProps {
     classes: any
     player: IPlayer
 }
-
-const PLAYER_DIALOG_BG = "https://fantasy.premierleague.com/static/media/eiw-bg-m.6f402e5a.svg"
-
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     root: {
@@ -25,31 +24,31 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     }
 });
 
+const teamsStore = stores.teamsStore;
+const playersStore = stores.playersStore;
 
-function PlayerSelectionControl(props: IProps) {
+const PlayerSelectionControl = (props: IProps) => {
     const { classes } = props;
-
-    useEffect(() => {
-        stores.teamsStore.getTeams()
+    useEffect( () => {
+        teamsStore.getTeams()
     }, [])
 
-    const teams: ISelectItem[] = [
-        {label: "Team A", value: 1},
-        {label: "Team B", value: 2},
-        {label: "Team C", value: 3},
-    ]
+    const updateSelectedTeam = (selectedTeamId: number) => {
+        teamsStore.selectedTeam = selectedTeamId;
+        playersStore.updatePlayersBySelectedTeam(selectedTeamId)
+    }
 
-    const players: ISelectItem[] = [
-        {label: "Player A", value: 1},
-        {label: "Player B", value: 2},
-        {label: "Player C", value: 3},
-    ]
+    const updateSelectedPlayer = (selectedPlayerId: number) => {
+        playersStore.updateSelectedPlayer(selectedPlayerId);
+    }
 
-    return (
-        <div className={classes.root}>
-            <div className={classes.selectContainer}><FPLSSelect onChange={(val) => console.log(val)} value={"TEAMS"} items={teams}/></div>
-            <div className={classes.selectContainer}><FPLSSelect onChange={(val) => console.log(val)} value={"PLAYERS"} items={players}/></div>
-        </div>
+    return (<Observer>
+            {() => {return <div className={classes.root}>
+                <div className={classes.selectContainer}><FPLSSelect onChange={(selectedTeamId: number) => updateSelectedTeam(selectedTeamId)} value={teamsStore.selectedTeam.toString()} items={teamsStore.presentedTeams}/></div>
+                <div className={classes.selectContainer}><FPLSSelect onChange={(selectedPlayerId: number) =>updateSelectedPlayer(selectedPlayerId)} value={playersStore._selectedPlayer.code.toString()} items={playersStore.playersByTeamToPresent}/></div>
+            </div>}}
+        </Observer>
+
     );
 }
 

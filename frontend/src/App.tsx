@@ -3,6 +3,7 @@ import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
 import SideBarMenu from "./components/SideBarMenu";
 import AppContent from "./views/AppContent/AppContent";
+import ColorsPalette from "./assets/Colors";
 
 interface IProps {
     classes: any;
@@ -10,7 +11,7 @@ interface IProps {
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     appContainer: {
-        backgroundColor: "#f6f6f6",
+        backgroundColor: ColorsPalette.appContentBackground,
         height: "100vh",
         overflowX: "hidden",
         overflowY: "hidden"

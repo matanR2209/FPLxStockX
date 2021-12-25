@@ -6,6 +6,7 @@ import {
     Theme,
     withStyles
 } from "@material-ui/core";
+import ColorsPalette from "../assets/Colors";
 
 export interface ISelectItem {
  label: string,
@@ -15,7 +16,7 @@ export interface ISelectItem {
 interface IProps {
     classes: any;
     value: string;
-    onChange: (change: string ) => void;
+    onChange: (change: any ) => void;
     items: ISelectItem[];
 }
 
@@ -26,11 +27,11 @@ const styles: StyleRulesCallback<Theme, {}> = (theme: Theme) => ({
     },
     textFiledInput: {
         padding: 8,
-        backgroundColor: "#FFF",
+        backgroundColor: ColorsPalette.white,
         fontWeight: 500,
         boxShadow: "0 0 0 0 #e4e6eb",
         "& .MuiSelect-select:focus": {
-            backgroundColor: "#FFF"
+            backgroundColor: ColorsPalette.white
         }
     },
     textFieldInput: {

@@ -1,6 +1,8 @@
 import React from "react";
 import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
 import {IPlayer} from "../../../../shared/model/player/types";
+import ColorsPalette from "../../assets/Colors";
+import Utils from "../../Utils/Utils";
 
 
 interface IProps {
@@ -16,28 +18,22 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         borderBottom: "2px solid #F6F6F6",
         display: "flex",
         justifyContent: "space-between"
-    },
-    trendingPlayerLeftSection: {
-
-    },
-    trendingPlayerRightSection: {}
+    }
 });
 
 
 function TrendingPlayerRow(props: IProps) {
     const { classes, trendingPlayer } = props;
-
-    const trend = (trendingPlayer.transfers_in_event - trendingPlayer.transfers_out_event) / 100;
-
+    const trend = Utils.getPlayerTrend(trendingPlayer);
     return (
         <div className={classes.trendingPlayerRowContainer}>
           <div className={classes.trendingPlayerLeftSection}>
               <div>{trendingPlayer.web_name}</div>
-              <div>{trendingPlayer.team}</div>
+              <div>{Utils.getTeamNameById(trendingPlayer.team_code)}</div>
           </div>
             <div className={classes.trendingPlayerRightSection}>
                 <div>{trendingPlayer.transfers_in}</div>
-                <div style={{color: trend < 0 ? "#FA2D00" : "#43D00A"}}>{`${trendingPlayer.transfers_in_event} (${trend})`} </div>
+                <div style={{color: trend < 0 ? ColorsPalette.trendRed : ColorsPalette.trendGreen}}>{`${trendingPlayer.transfers_in_event} (${trend})`} </div>
             </div>
         </div>
     );
