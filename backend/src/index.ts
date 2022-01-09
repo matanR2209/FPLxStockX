@@ -1,23 +1,24 @@
 import express from 'express';
+const cors = require('cors');
 import updatePlayersInfo from "./controllers/updatePlayersInfo";
-import playerRouter from "./api/routers/playerRouter";
+import playersRouter from "./api/routers/playersRouter";
+import trendingRouter from "./api/routers/trendingRouter";
+
 
 const app = express();
-const cors = require('cors');
-
 app.use(cors());
 app.options('*', cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.send('Test2');
-})
-
 app.get('/setData', updatePlayersInfo)
 
-app.use('/player', playerRouter)
+app.use('/players', playersRouter)
+
+app.use('/trending', trendingRouter)
 
 app.listen(3001, () => {
     console.log('The application is listening on port 3001!');
 })
+
+

@@ -8,6 +8,9 @@
     "forceConsistentCasingInFileNames": true,        /* Disallow inconsistently-cased references to the same file. */
     "outDir": "./dist",
     "rootDir": "./",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

@@ -34,11 +34,17 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
 
 function TrendingPlayers(props: IProps) {
     const { classes } = props;
-    const [trendingPlayers, setWatchlistPlayers] = React.useState<IPlayer[]>([]);
+    const [trendingPlayers, setTrendingPlayers] = React.useState<IPlayer[]>([]);
 
     useEffect(() => {
-        setWatchlistPlayers(PlayerDataApiService.getTrendingPlayers());
+
     },[]);
+
+    useEffect(() => {
+        (async () => {
+            setTrendingPlayers(await PlayerDataApiService.getTrendingPlayers());
+        })()
+    }, []);
 
     const renderTrendingPlayers = () => {
         return trendingPlayers.map(player => <TrendingPlayerRow trendingPlayer={player}/> )

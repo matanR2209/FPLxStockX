@@ -6,7 +6,7 @@ const API_URL = "https://fantasy.premierleague.com/api/bootstrap-static/"
 export class BootstrapStaticApiService {
 
     public static getStaticData =  async () => {
-        const response = await  NetworkService.get(API_URL, undefined, {
+        const response = await NetworkService.get(API_URL, undefined, {
                 'User-Agent': '*'
             });
         return response.data as IStaticData

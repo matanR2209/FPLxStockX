@@ -31,7 +31,7 @@ export class NetworkService {
         if (!response) {
             throw new Error(`Bad status ${JSON.stringify(response)}`);
         } else {
-            return response;
+            return response.data;
         }
     }
 }

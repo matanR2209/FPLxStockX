@@ -1,6 +1,6 @@
 import * as express from "express";
-import playerRouter from "./playerRouter";
+import playersRouter from "./playerRouter";
 
 const appRouter = express.Router();
 
-appRouter.use("/player" , playerRouter);
+appRouter.use("/player" , playersRouter);

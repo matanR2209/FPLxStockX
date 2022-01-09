@@ -25,6 +25,10 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
 function TrendingPlayerRow(props: IProps) {
     const { classes, trendingPlayer } = props;
     const trend = Utils.getPlayerTrend(trendingPlayer);
+
+    const getTrendColor = () => {
+        return trend < 0 ? classes.trendRed : classes.trendGreen;
+    }
     return (
         <div className={classes.trendingPlayerRowContainer}>
           <div className={classes.trendingPlayerLeftSection}>
@@ -33,7 +37,7 @@ function TrendingPlayerRow(props: IProps) {
           </div>
             <div className={classes.trendingPlayerRightSection}>
                 <div>{trendingPlayer.transfers_in}</div>
-                <div style={{color: trend < 0 ? ColorsPalette.trendRed : ColorsPalette.trendGreen}}>{`${trendingPlayer.transfers_in_event} (${trend})`} </div>
+                <div className={getTrendColor()} >{`${trendingPlayer.transfers_in_event} (${trend})`} </div>
             </div>
         </div>
     );

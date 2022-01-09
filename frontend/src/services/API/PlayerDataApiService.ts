@@ -3,11 +3,11 @@ import TRENDING_PLAYERS from "../../assets/TRENDING_PLAYERS";
 
 export default class PlayerDataApiService {
     private static get basePath() {
-        return `http://localhost:3001/player`;
+        return `http://localhost:3001/`;
     }
 
     public static getPlayerStats = async (playerId: string) => {
-        const url = `${PlayerDataApiService.basePath}/${playerId}` ;
+        const url = `${PlayerDataApiService.basePath}player/${playerId}` ;
         return NetworkService.get(url)
     }
 
@@ -16,7 +16,8 @@ export default class PlayerDataApiService {
     }
 
     public static getTrendingPlayers = () => {
-        return TRENDING_PLAYERS
+        const url = `${PlayerDataApiService.basePath}trending` ;
+        return NetworkService.get(url)
     }
 
     public static getRelatedPlayers = () => {

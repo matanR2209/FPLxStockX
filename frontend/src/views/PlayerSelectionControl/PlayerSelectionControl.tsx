@@ -48,7 +48,6 @@ const PlayerSelectionControl = (props: IProps) => {
                 <div className={classes.selectContainer}><FPLSSelect onChange={(selectedPlayerId: number) =>updateSelectedPlayer(selectedPlayerId)} value={playersStore._selectedPlayer.code.toString()} items={playersStore.playersByTeamToPresent}/></div>
             </div>}}
         </Observer>
-
     );
 }
 
