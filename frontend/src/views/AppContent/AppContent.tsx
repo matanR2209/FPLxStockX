@@ -51,7 +51,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         justifyContent: "space-between"
     },
     rightSection: {
-        marginLeft: "1em",
         width: "20%",
     }
 });
