@@ -1,22 +1,24 @@
 import {NetworkService} from "../NetworkService";
-import TRENDING_PLAYERS from "../../assets/TRENDING_PLAYERS";
+import {ApiEndpoints, PlayersEndPoints} from "../../shared/model/network/enums";
+
 
 export default class PlayerDataApiService {
     private static get basePath() {
-        return `http://localhost:3001/`;
+        return `http://localhost:3001`;
     }
 
     public static getPlayerStats = async (playerId: string) => {
-        const url = `${PlayerDataApiService.basePath}player/${playerId}` ;
+        const url = `${PlayerDataApiService.basePath}${ApiEndpoints.Players}/${playerId}` ;
         return NetworkService.get(url)
     }
 
     public static getTrendingPlayers = () => {
-        const url = `${PlayerDataApiService.basePath}trending` ;
+        const url = `${PlayerDataApiService.basePath}${ApiEndpoints.Players}${PlayersEndPoints.Trending}` ;
         return NetworkService.get(url)
     }
 
-    public static getRelatedPlayers = () => {
-        return TRENDING_PLAYERS
+    public static getRelatedPlayers = (selectedPlayerId: number) => {
+        const url = `${PlayerDataApiService.basePath}${ApiEndpoints.Players}${PlayersEndPoints.Related}/${selectedPlayerId}` ;
+        return NetworkService.get(url)
     }
 }

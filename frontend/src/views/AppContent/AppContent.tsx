@@ -52,6 +52,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     },
     rightSection: {
         width: "20%",
+        marginLeft: "1em"
     }
 });
 
@@ -62,14 +63,12 @@ function AppContent(props: IProps) {
 
     useEffect(() => {
         (async () => {
-            const response = await UserApiService.getUserInfo("testId");
+            const response = await UserApiService.getUserInfo("userTestId");
             if(response.ok) {
                 userStore.user = response.data;
             } else {
                 console.error("Whhhhos, somthing went wrong");
             }
-
-
         })()
     }, []);
 

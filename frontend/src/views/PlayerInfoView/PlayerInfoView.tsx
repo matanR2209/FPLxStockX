@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const PLAYER_DIALOG_BG = "https://fantasy.premierleague.com/static/media/eiw-bg-m.6f402e5a.svg"
+const PLAYER_IMAGE_PREFIX = "https://resources.premierleague.com/premierleague/photos/players/110x140/p"
 
 const INFO_VIEW_HEADERS = {
     OWNED_BY: "Owned by(%): ",
@@ -65,8 +66,10 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     summary: {
         backgroundColor: ColorsPalette.playerInfoView.purple,
         color: ColorsPalette.white,
-        padding: ".2em",
+        padding: "1em .5em",
         borderRadius: "0 0 .5em .5em",
+        display: "flex",
+        flexDirection: "row"
     }
 });
 
@@ -74,31 +77,30 @@ const playersStore = stores.playersStore;
 
 function PlayerInfoView(props: IProps) {
     const { classes } = props;
-
     const renderTrend = () => {
-     const trend = (playersStore._selectedPlayer.transfers_in_event - playersStore._selectedPlayer.transfers_out_event) / 100;
+     const trend = (playersStore.selectedPlayer.transfers_in_event - playersStore.selectedPlayer.transfers_out_event) / 100;
      return <div className={classes.sectionData} style={{color: trend < 0 ? ColorsPalette.trendRed : ColorsPalette.trendGreen}}>{trend}%</div>
     }
 
     const renderPlayerBio  = () => {
         return (<div className={classes.playerBio}>
-            <div className={classes.playerName}>{playersStore._selectedPlayer.first_name} {playersStore._selectedPlayer.second_name}</div>
-            <div className={classes.playerRole}>{`Position: ${playersStore._selectedPlayer.element_type}`}</div>
-            <div className={classes.playerTeam}>{`Team: ${Utils.getTeamNameById(playersStore._selectedPlayer.team_code)}`}</div>
+            <div className={classes.playerName}>{playersStore.selectedPlayer.first_name} {playersStore.selectedPlayer.second_name}</div>
+            <div className={classes.playerRole}>{`Position: ${playersStore.selectedPlayer.element_type}`}</div>
+            <div className={classes.playerTeam}>{`Team: ${Utils.getTeamNameById(playersStore.selectedPlayer.team_code)}`}</div>
         </div>)
     }
 
     const renderPlayerImage = () => {
         return (<div>
-            <img alt={playersStore._selectedPlayer.web_name} style={{height: "6em"}} src={`https://resources.premierleague.com/premierleague/photos/players/110x140/p${playersStore._selectedPlayer.code}.png`}/>
+            <img alt={playersStore.selectedPlayer.web_name} style={{height: "6em"}} src={`${PLAYER_IMAGE_PREFIX}${playersStore.selectedPlayer.code}.png`}/>
         </div>)
     }
 
     const renderPlayerData = () => {
         return <div className={classes.playerDataSection}>
-            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.OWNED_BY} dataValue={`${playersStore._selectedPlayer.selected_by_percent} %`} />
-            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_IN} dataValue={playersStore._selectedPlayer.transfers_in_event} />
-            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_OUT} dataValue={playersStore._selectedPlayer.transfers_out_event} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.OWNED_BY} dataValue={`${playersStore.selectedPlayer.selected_by_percent} %`} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_IN} dataValue={playersStore.selectedPlayer.transfers_in_event} />
+            <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TRANSFER_OUT} dataValue={playersStore.selectedPlayer.transfers_out_event} />
             <PlayerInfoDataRow dataKey={INFO_VIEW_HEADERS.TREND} dataValue={renderTrend()}/>
         </div>
     }
@@ -106,8 +108,7 @@ function PlayerInfoView(props: IProps) {
     const renderPlayerSummary = () => {
         return (
             <div className={classes.summary}>
-            <div>{INFO_VIEW_HEADERS.TOTAL_OWNERS}</div>
-            <div className={classes.sectionData}>{playersStore._selectedPlayer.transfers_in}</div>
+            <div>{`${INFO_VIEW_HEADERS.TOTAL_OWNERS}   ${playersStore.selectedPlayer.transfers_in}`}</div>
         </div>)
     }
 

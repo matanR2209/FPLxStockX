@@ -1,22 +1,21 @@
 import React, {useEffect} from "react";
 import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
-import {IPlayer} from "../../../../shared/model/player/types";
 import TrendingPlayerRow from "./TrendingPlayerRow";
 import ColorsPalette from "../../assets/Colors";
 import PlayerDataApiService from "../../services/API/PlayerDataApiService";
-
+import Loader from "../../components/Loader";
+import {IPlayer} from "../../shared/model/player/types";
 
 interface IProps {
     classes: any
 }
-
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     root: {
         display: "flex",
         flexDirection: "column",
         height: "inherit",
-        width: "47%"
+        width: "50%"
     },
     header: {
         fontWeight: "bold",
@@ -27,10 +26,16 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     trendingListContainer: {
         backgroundColor: "white",
         overflowY: "scroll",
-        height: "40%"
+        height: "27%",
+        position:"relative",
+        overflow:"hidden",
+    },
+    trendingList: {
+        top:0,
+        position:"absolute",
+        width: "100%"
     }
 });
-
 
 function TrendingPlayers(props: IProps) {
     const { classes } = props;
@@ -38,17 +43,26 @@ function TrendingPlayers(props: IProps) {
 
     useEffect(() => {
         (async () => {
-            setTrendingPlayers(await PlayerDataApiService.getTrendingPlayers());
+            const response = await PlayerDataApiService.getTrendingPlayers();
+            if(response.ok && response.data) {
+                setTrendingPlayers(response.data);
+            }
+
         })()
     }, []);
 
     const renderTrendingPlayers = () => {
-        return trendingPlayers.map(player => <TrendingPlayerRow key={player.id} trendingPlayer={player}/> )
+        return (<div className={classes.trendingListContainer}>
+                    <div >
+                    {trendingPlayers.map(player => <TrendingPlayerRow key={player.id} trendingPlayer={player}/> )}
+                </div>
+            </div>
+        )
     }
 
     return (<div className={classes.root}>
                 <div className={classes.header}>Trending</div>
-                <div className={classes.trendingListContainer}>{renderTrendingPlayers()}</div>
+                {trendingPlayers.length > 0? renderTrendingPlayers() :<Loader/> }
             </div>);
 }
 

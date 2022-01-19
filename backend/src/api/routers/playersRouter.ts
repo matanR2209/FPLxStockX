@@ -1,8 +1,14 @@
 import * as express from "express";
-import getPlayerData from "../controllers/players/getPlayerData";
+import PlayersController from "../controllers/players/playersController";
+import {PlayersEndPoints} from "../../shared/model/network/enums";
 
-const playersRouter = express.Router({mergeParams: true});
+const playerRouter = express.Router({mergeParams: true});
 
-playersRouter.route("/:playerId" ).get(getPlayerData);
+// TODO: to implement
+playerRouter.route(`${PlayersEndPoints.GetPlayer}/:playerId` ).get(PlayersController.getPlayerData);
 
-export default playersRouter;
+playerRouter.route(`${PlayersEndPoints.Related}/:playerId`).get(PlayersController.getRelatedPlayers);
+
+playerRouter.route(PlayersEndPoints.Trending).get(PlayersController.getTrendingPlayers);
+
+export default playerRouter;

@@ -24,6 +24,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-charts": "^3.0.15",
+    "react-loader-spinner": "^5.0.10",
     "react-material-ui-carousel": "^2.3.5",
     "react-multi-carousel": "^2.6.5",
     "react-scripts": "4.0.3",
@@ -35,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.ts{,x}",
+    "format": "prettier --write 2 src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
   },
   "eslintConfig": {

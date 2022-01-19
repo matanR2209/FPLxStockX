@@ -25,7 +25,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         position:"relative",
         height: "95%",
         overflow:"hidden",
-        overflowY:"auto"
+        overflowY:"hidden"
     },
     watchlistPlayersContainer: {
         top:0,
@@ -42,18 +42,21 @@ const userStore = stores.userStore;
 function WatchlistContainer(props: IProps) {
     const { classes } = props;
 
+    const renderWatchlist = () => {
+        return (
+            <div className={classes.verticalScrollerContainer}>
+                <div className={classes.watchlistPlayersContainer}>
+                    {userStore.userWatchlist? userStore.userWatchlist.map(player => <PlayerWatchlistView key={player.id} player={player}/>) : null}
+                </div>
+            </div>
+        )
+    }
+
     return (<Observer>
             {() => {return (<>
                    <div className={classes.header}>Watchlist</div>
-                <div className={classes.verticalScrollerContainer}>
-                    <div className={classes.watchlistPlayersContainer}>
-                        {userStore.userWatchlist? userStore.userWatchlist.map(player =>
-                                <PlayerWatchlistView key={player.id} player={player}/>
-                            )
-                            : <Loader/>
-                        }
-                    </div>
-                </div>
+                    {userStore.userWatchlist? renderWatchlist() : <Loader/> }
+
             </>)}}
         </Observer>
     );

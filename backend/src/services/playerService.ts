@@ -1,8 +1,8 @@
-import {IPlayer} from "../../../shared/model/player/types";
 import * as admin from "firebase-admin";
 import * as _ from 'lodash';
 import {firestore} from "../firestore/firestore";
 import {BootstrapStaticApiService} from "./bootstrapStaticApiService";
+import {IPlayer} from "../shared/model/player/types";
 
 export class PlayerService {
     public static savePlayersData = async (players: IPlayer[]) => {
@@ -50,5 +50,11 @@ export class PlayerService {
     public static getTrendingPlayers = async () => {
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 10)
+    }
+
+    public static getRelatedPlayers = async (playerId: string) => {
+        console.log(`get players related to: ${playerId}`);
+        const response = await BootstrapStaticApiService.getStaticData();
+        return _.sampleSize(response.elements, 6)
     }
 }

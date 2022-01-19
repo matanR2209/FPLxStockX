@@ -1,20 +1,17 @@
 import React from "react";
-import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
+import { StyleRulesCallback, Theme, withStyles } from "@material-ui/core";
+import { TailSpin } from "react-loader-spinner";
+
+import ColorsPalette from "../assets/Colors";
 
 interface IProps {
-    classes: any;
+  classes: any;
 }
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({});
 
-
 function Loader(props: IProps) {
-    const { classes } = props;
-    return (
-        <div className={classes.container}>
-            Loader
-        </div>
-    );
+  return <TailSpin color={ColorsPalette.darkBlue} />;
 }
 
 export default withStyles(styles)(Loader);

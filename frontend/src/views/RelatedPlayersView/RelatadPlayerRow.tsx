@@ -1,13 +1,12 @@
 import React from "react";
 import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
-import {IPlayer} from "../../../../shared/model/player/types";
+import {IPlayer} from "../../shared/model/player/types";
 
 
 interface IProps {
     classes: any
     relatedPlayer: IPlayer
 }
-
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     playerRowContainer: {
@@ -33,7 +32,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         justifyContent: "space-around"
     }
 });
-
 
 function RelatedPlayerRowRow(props: IProps) {
     const { classes, relatedPlayer } = props;

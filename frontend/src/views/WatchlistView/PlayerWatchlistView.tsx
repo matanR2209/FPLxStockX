@@ -1,10 +1,10 @@
 import React from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Theme} from "@material-ui/core";
-import {IPlayer} from "../../../../shared/model/player/types";
 import ColorsPalette from "../../assets/Colors";
 import Utils from "../../Utils/Utils";
 import WatchListGraphView from "../GraphView/WatchListGraphView";
+import {IPlayer} from "../../shared/model/player/types";
 
 interface IProps {
     classes: any
@@ -19,6 +19,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         borderRadius: 10,
         boxShadow: "rgba(0, 0, 0, 0.5) 0px 2px 4px",
         marginBottom: "2em",
+        marginLeft: "1em",
         padding: "1em 2em",
         display: "flex",
         flexDirection: "row",
