@@ -37,17 +37,13 @@ function TrendingPlayers(props: IProps) {
     const [trendingPlayers, setTrendingPlayers] = React.useState<IPlayer[]>([]);
 
     useEffect(() => {
-
-    },[]);
-
-    useEffect(() => {
         (async () => {
             setTrendingPlayers(await PlayerDataApiService.getTrendingPlayers());
         })()
     }, []);
 
     const renderTrendingPlayers = () => {
-        return trendingPlayers.map(player => <TrendingPlayerRow trendingPlayer={player}/> )
+        return trendingPlayers.map(player => <TrendingPlayerRow key={player.id} trendingPlayer={player}/> )
     }
 
     return (<div className={classes.root}>

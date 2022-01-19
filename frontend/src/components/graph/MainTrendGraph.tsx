@@ -31,7 +31,6 @@ function MainTrendGraph(props: IProps) {
             ...res
         ]
     }
-    console.log(playerStats);
     return (
         <div className={classes.graphContainer}>
             <Chart

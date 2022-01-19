@@ -11,10 +11,6 @@ export default class PlayerDataApiService {
         return NetworkService.get(url)
     }
 
-    public static getWatchlistPlayers = () => {
-        return TRENDING_PLAYERS
-    }
-
     public static getTrendingPlayers = () => {
         const url = `${PlayerDataApiService.basePath}trending` ;
         return NetworkService.get(url)

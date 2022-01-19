@@ -1,8 +1,8 @@
 import React from "react";
 import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
 import {IPlayer} from "../../../../shared/model/player/types";
-import ColorsPalette from "../../assets/Colors";
 import Utils from "../../Utils/Utils";
+import ColorsPalette from "../../assets/Colors";
 
 
 interface IProps {
@@ -15,7 +15,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     trendingPlayerRowContainer: {
         margin: "1em",
         padding: ".5em",
-        borderBottom: "2px solid #F6F6F6",
+        borderBottom: `2px solid ${ColorsPalette.appContentBackground}`,
         display: "flex",
         justifyContent: "space-between"
     }

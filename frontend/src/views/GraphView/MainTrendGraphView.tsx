@@ -1,5 +1,4 @@
 import React from "react";
-import {observer} from "mobx-react";
 import {IPlayerStatsHistory, IStatsHistory} from "../../../../shared/model/player/types";
 import MainTrendGraph from "../../components/graph/MainTrendGraph";
 
@@ -15,7 +14,6 @@ function MainTrendGraphView(props: IProps) {
                 date: now.setDate(now.getDate() + i * 7)
             })
         }
-        console.log(res);
         return res
     }
 
@@ -31,4 +29,4 @@ function MainTrendGraphView(props: IProps) {
 }
 
 
-export default observer(MainTrendGraphView)
+export default MainTrendGraphView

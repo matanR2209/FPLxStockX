@@ -41,7 +41,7 @@ function RelatedPlayers(props: IProps) {
     },[]);
 
     const renderRelatedPlayers = () => {
-        return relatedPlayers.map(player => <RelatadPlayerRow relatedPlayer={player}/> )
+        return relatedPlayers.map(player => <RelatadPlayerRow key={player.id} relatedPlayer={player}/> )
     }
 
     return (<div className={classes.root}>
