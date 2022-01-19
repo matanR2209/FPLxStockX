@@ -1,5 +1,5 @@
 import {NetworkService} from "./NetworkService";
-import {IStaticData} from "../../../shared/model/apiData/types";
+import {IStaticData} from "../shared/model/apiData/types";
 
 const API_URL = "https://fantasy.premierleague.com/api/bootstrap-static/"
 

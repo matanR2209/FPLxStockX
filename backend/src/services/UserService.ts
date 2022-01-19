@@ -13,4 +13,9 @@ export class UserService {
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 12)
     }
+
+    public static addUserToWatchlist = async (userId: string, playerId: number) => {
+        console.log(`Adding ${playerId} to ${userId} watchlist`)
+        return true;
+    }
 }

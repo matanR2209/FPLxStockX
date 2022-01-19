@@ -1,8 +1,8 @@
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
 import { Theme} from "@material-ui/core";
-import {IPlayer} from "../../../../shared/model/player/types";
 import ColorsPalette from "../../assets/Colors";
+import {IPlayer} from "../../shared/model/player/types";
 
 interface IProps {
     classes: any

@@ -2,7 +2,8 @@ import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Theme } from "@material-ui/core";
 import {Chart} from "react-google-charts";
-import {IPlayerStatsHistory, IStatsHistory} from "../../../../shared/model/player/types";
+import {IPlayerStatsHistory, IStatsHistory} from "../../shared/model/player/types";
+
 interface IProps {
     classes: any;
     playerStats: IPlayerStatsHistory

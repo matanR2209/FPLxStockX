@@ -1,6 +1,6 @@
 import React from "react";
-import {IPlayerStatsHistory, IStatsHistory} from "../../../../shared/model/player/types";
 import MainTrendGraph from "../../components/graph/MainTrendGraph";
+import {IPlayerStatsHistory, IStatsHistory} from "../../shared/model/player/types";
 
 interface IProps {}
 
