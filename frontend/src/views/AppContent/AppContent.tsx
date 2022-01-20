@@ -67,7 +67,7 @@ function AppContent(props: IProps) {
             if(response.ok) {
                 userStore.user = response.data;
             } else {
-                console.error("Whhhhos, somthing went wrong");
+                console.error("Whhoooos, something went wrong");
             }
         })()
     }, []);
