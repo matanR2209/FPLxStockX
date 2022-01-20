@@ -7,7 +7,7 @@ A dashboard built for Fantasy Premier League users assistance.
  
  b. [stockX](https://stockx.com/) where i got the idea for related items and graphs to show trends - while here it's for sneakers, i applied it for players. for example, [here](https://stockx.com/new-balance-550-syracuse)
 
-###Architecture
+### Architecture
 
 The raw data is pulled from https://fantasy.premierleague.com/api/bootstrap-static/, for things like prices and transfer in/out events - live real time data.
 
