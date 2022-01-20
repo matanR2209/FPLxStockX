@@ -1,6 +1,6 @@
 import * as express from "express";
-import PlayersController from "../controllers/players/playersController";
 import {PlayersEndPoints} from "../../shared/model/network/enums";
+import PlayersController from "../controllers/players/PlayersController";
 
 const playerRouter = express.Router({mergeParams: true});
 
