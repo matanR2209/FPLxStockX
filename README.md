@@ -23,6 +23,8 @@ In order to run the project please make sure the following software is installed
 - Node.js Version 10+
 - Yarn 1+
 
+project setup
+ 
     cd shared
     run yarn 
     cd ..
