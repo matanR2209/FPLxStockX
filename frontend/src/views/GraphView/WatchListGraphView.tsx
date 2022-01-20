@@ -7,5 +7,4 @@ function WatchListGraphView(props: IProps) {
     return <WatchListGraph/>;
 }
 
-
 export default WatchListGraphView

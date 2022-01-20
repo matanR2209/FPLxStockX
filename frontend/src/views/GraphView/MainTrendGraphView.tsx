@@ -24,6 +24,7 @@ function MainTrendGraphView(props: IProps) {
                 }
             }),
         [],)
+
     return selectedPlayerStats? <MainTrendGraph playerStats={selectedPlayerStats}/> : <Loader/>;
 }
 

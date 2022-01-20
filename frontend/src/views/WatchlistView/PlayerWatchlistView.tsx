@@ -58,7 +58,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     }
 });
 
-
 function PlayerWatchlistView(props: IProps) {
     const { classes, player } = props;
     const trend = Utils.getPlayerTrend(player);

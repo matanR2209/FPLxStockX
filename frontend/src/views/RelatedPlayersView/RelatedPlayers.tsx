@@ -58,8 +58,6 @@ function RelatedPlayers(props: IProps) {
             }),
         [],)
 
-
-
     const renderRelatedPlayers = () => {
         return (<div className={classes.relatedPlayersContainer}>
             <div className={classes.relatedList}>

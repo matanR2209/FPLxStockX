@@ -86,7 +86,6 @@ const PlayerSelectionControl = (props: IProps) => {
         </>)
     }
 
-
     return (<Observer>
             {() => {return <div className={classes.root}>
                 {renderControllers()}

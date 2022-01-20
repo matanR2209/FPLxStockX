@@ -21,7 +21,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     }
 });
 
-
 function TrendingPlayerRow(props: IProps) {
     const { classes, trendingPlayer } = props;
     const trend = Utils.getPlayerTrend(trendingPlayer);
