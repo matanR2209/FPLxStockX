@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import {firestore} from "../firestore/firestore";
 import {BootstrapStaticApiService} from "./bootstrapStaticApiService";
 import {IPlayer} from "../shared/model/player/types";
+import Utils from "../Utils/Utils";
 
 export class PlayerService {
     public static savePlayersData = async (players: IPlayer[]) => {
@@ -56,5 +57,15 @@ export class PlayerService {
         console.log(`get players related to: ${playerId}`);
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 6)
+    }
+
+    public static getPlayerStats = async (playerId: string) => {
+        console.log(`Get stats for ${playerId}`);
+        return {
+            points: Utils.generateRandomHistoryStats(),
+            transferIn: Utils.generateRandomHistoryStats(),
+            transferOut: Utils.generateRandomHistoryStats(),
+            totalOwners: Utils.generateRandomHistoryStats(),
+        }
     }
 }
