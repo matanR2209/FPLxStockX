@@ -48,20 +48,17 @@ export class PlayerService {
         });
     }
 
-    // TODO: implement trending players logic
     public static getTrendingPlayers = async () => {
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 10)
     }
 
-    // TODO: implement related players logic
     public static getRelatedPlayers = async (playerId: string) => {
         console.log(`get players related to: ${playerId}`);
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 6)
     }
 
-    // TODO: implement Player stats fetching from DB
     public static getPlayerStats = async (playerId: string) => {
         console.log(`Get stats for ${playerId}`);
         return {
