@@ -8,7 +8,10 @@ In order to run the project please make sure the following software is installed
 - Yarn 1+
 
 setting up the project:
- - on root folder run "yarn shared:upgrade"
+ - cd shared
+ - run yarn
+ - cd ..
+ - run "yarn shared:upgrade"
   
 To run the FE:  
  - cd frontend
