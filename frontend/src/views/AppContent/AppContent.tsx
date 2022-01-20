@@ -10,10 +10,6 @@ import MainTrendGraphView from "../GraphView/MainTrendGraphView";
 import RelatedPlayers from "../RelatedPlayersView/RelatedPlayers";
 import UserApiService from "../../services/API/UserApiService";
 import {stores} from "../../state";
-import AppOnBoardingContainer from "../../components/onBoarding/AppOnBoardingContainer";
-import {Observer} from "mobx-react";
-import {OnBoardingStage} from "../../shared/model/general/enums";
-import Loader from "../../components/Loader";
 
 
 interface IProps {
@@ -61,7 +57,7 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
 });
 
 const userStore = stores.userStore;
-const onBoardingStore = stores.onBoardingStore
+
 function AppContent(props: IProps) {
     const { classes } = props;
 
@@ -76,30 +72,26 @@ function AppContent(props: IProps) {
         })()
     }, []);
 
-    return (<Observer>
-        {() => {return (<>
-            {onBoardingStore.isOnBoardingActive? <AppOnBoardingContainer/> : null}
-            <div className={classes.container}>
-                <div className={classes.content}>
-                    <div className={classes.leftSection}>
-                        <PlayerSelectionControl/>
-                        <div className={classes.leftSectionTopRow}>
-                            <PlayerInfoView />
-                            <MainTrendGraphView/>
-                        </div>
-                        <div className={classes.leftSectionBottomRow}>
-                            <TrendingPlayers/>
-                            <RelatedPlayers/>
-                        </div>
+    return (
+        <div className={classes.container}>
+            <div className={classes.content}>
+                <div className={classes.leftSection}>
+                    <PlayerSelectionControl/>
+                    <div className={classes.leftSectionTopRow}>
+                        <PlayerInfoView />
+                        <MainTrendGraphView/>
                     </div>
-                    <div className={classes.rightSection}>
-                        <WatchlistContainer/>
+                    <div className={classes.leftSectionBottomRow}>
+                        <TrendingPlayers/>
+                        <RelatedPlayers/>
                     </div>
                 </div>
+                <div className={classes.rightSection}>
+                    <WatchlistContainer/>
+                </div>
             </div>
-        </>)}}
-    </Observer>)
-
+        </div>
+    );
 }
 
 export default withStyles(styles)(AppContent);

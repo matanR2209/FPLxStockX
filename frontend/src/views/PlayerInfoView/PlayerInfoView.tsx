@@ -6,7 +6,6 @@ import {Observer} from "mobx-react";
 import ColorsPalette from "../../assets/Colors";
 import Utils from "../../Utils/Utils";
 import PlayerInfoDataRow from "../../components/PlayerInfoDataRow";
-import {OnBoardingStage} from "../../shared/model/general/enums";
 
 interface IProps {
     classes: any
@@ -71,16 +70,10 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         borderRadius: "0 0 .5em .5em",
         display: "flex",
         flexDirection: "row"
-    },
-    onBoardingHighlight: {
-        zIndex: 11,
-        padding: ".5em",
-        backgroundColor: ColorsPalette.white
     }
 });
 
 const playersStore = stores.playersStore;
-const onBoardingStore = stores.onBoardingStore
 
 function PlayerInfoView(props: IProps) {
     const { classes } = props;
@@ -120,7 +113,7 @@ function PlayerInfoView(props: IProps) {
     }
 
     return (<Observer>
-            {() => {return <div className={`${classes.root} ${onBoardingStore.isOnComponentHighlighted(OnBoardingStage.PlayerView)? classes.onBoardingHighlight: {}} `}>
+            {() => {return <div className={classes.root}>
                 <div className={classes.header}>
                     {renderPlayerImage()}
                     {renderPlayerBio()}

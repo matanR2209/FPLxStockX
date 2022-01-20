@@ -34,11 +34,10 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     },
     "@keyframes scroll": {
         "100%": { top: -360 }
-    },
+    }
 });
 
 const userStore = stores.userStore;
-const onBoardingStore = stores.onBoardingStore;
 
 function WatchlistContainer(props: IProps) {
     const { classes } = props;

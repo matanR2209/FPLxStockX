@@ -8,7 +8,6 @@ import {stores} from "../../state";
 import Loader from "../../components/Loader";
 import {autorun} from "mobx";
 import {IPlayer} from "../../shared/model/player/types";
-import {OnBoardingStage} from "../../shared/model/general/enums";
 
 interface IProps {
     classes: any
@@ -38,16 +37,10 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         top:0,
         position:"absolute",
         width: "100%"
-    },
-    onBoardingHighlight: {
-        zIndex: 11,
-        padding: ".5em",
-        backgroundColor: ColorsPalette.white
     }
 });
 
 const playersStore = stores.playersStore
-const onBoardingStore = stores.onBoardingStore;
 
 function RelatedPlayers(props: IProps) {
     const { classes } = props;
@@ -77,7 +70,7 @@ function RelatedPlayers(props: IProps) {
     }
 
     return (<Observer>
-            {() => {return (<div className={classes.root} style={{zIndex: onBoardingStore.isOnComponentHighlighted(OnBoardingStage.Related)? 11 : "inherit"}}>
+            {() => {return (<div className={classes.root}>
                 <div className={classes.header}>Related players</div>
                 {relatedPlayers.length > 0? renderRelatedPlayers() : <Loader/>}
             </div>)}}

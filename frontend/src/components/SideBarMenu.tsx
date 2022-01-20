@@ -3,10 +3,6 @@ import { StyleRulesCallback, withStyles } from "@material-ui/core/styles";
 import { Theme } from "@material-ui/core";
 import "react-multi-carousel/lib/styles.css";
 import ColorsPalette from "../assets/Colors";
-import {stores} from "../state";
-import {Observer} from "mobx-react";
-import {OnBoardingStage} from "../shared/model/general/enums";
-import Loader from "./Loader";
 
 interface IProps {
   classes: any;
@@ -35,25 +31,20 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
   },
   onBoardingHighlight: {
     zIndex: 11,
-    backgroundColor: ColorsPalette.white
-  }
+    backgroundColor: ColorsPalette.white,
+  },
 });
-
-const onBoardingStore = stores.onBoardingStore;
 
 function SideBarMenu(props: IProps) {
   const { classes } = props;
 
-
-
-  return (<Observer>
-    {() => {return (<div className={`${classes.root} ${onBoardingStore.isOnComponentHighlighted(OnBoardingStage.ActionsMenu)? classes.onBoardingHighlight: {}} `}>
+  return (
+    <div className={classes.root}>
       <div className={classes.sideMenu}>
         <div className={classes.header}>User actions Side menu</div>
       </div>
-    </div>)}}
-  </Observer>)
-
+    </div>
+  );
 }
 
 export default withStyles(styles)(SideBarMenu);
