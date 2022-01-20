@@ -1,5 +1,5 @@
 import {RequestHandler} from "express";
-import {PlayerService} from "../../../services/playerService";
+import {PlayerService} from "../../../services/PlayerService";
 
 export default class PlayersController {
     public static getPlayerData: RequestHandler = async (req, res, next) => {
