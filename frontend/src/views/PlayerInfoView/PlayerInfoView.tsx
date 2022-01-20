@@ -85,7 +85,7 @@ function PlayerInfoView(props: IProps) {
     const renderPlayerBio  = () => {
         return (<div className={classes.playerBio}>
             <div className={classes.playerName}>{playersStore.selectedPlayer.first_name} {playersStore.selectedPlayer.second_name}</div>
-            <div className={classes.playerRole}>{`Position: ${playersStore.selectedPlayer.element_type}`}</div>
+            <div className={classes.playerRole}>{`Position: ${Utils.getPlayerPositionName(playersStore.selectedPlayer.element_type)}`}</div>
             <div className={classes.playerTeam}>{`Team: ${Utils.getTeamNameById(playersStore.selectedPlayer.team_code)}`}</div>
         </div>)
     }
