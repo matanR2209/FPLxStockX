@@ -1,6 +1,6 @@
 import * as express from "express";
 import UserController from "../controllers/user/UserController";
-import {UserApiEndpoints} from "../../shared/model/network/enums";
+import {UserApiEndpoints} from "../../../../shared/src/network/enums";
 
 const userRouter = express.Router({mergeParams: true});
 

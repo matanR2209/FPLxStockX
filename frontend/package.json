@@ -28,6 +28,7 @@
     "react-material-ui-carousel": "^2.3.5",
     "react-multi-carousel": "^2.6.5",
     "react-scripts": "4.0.3",
+    "shared": "../shared/dist",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
@@ -37,7 +38,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write 2 src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}",
+    "shared:build": "cd ../shared && yarn rebuild",
+    "shared:upgrade": "yarn shared:build && yarn upgrade shared"
   },
   "eslintConfig": {
     "extends": [

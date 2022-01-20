@@ -1,6 +1,6 @@
 import {RequestHandler} from "express";
-import {IUser} from "../../../shared/model/user/types";
 import {UserService} from "../../../services/UserService";
+import {IUser} from "../../../../../shared/src/user/types";
 
 export default class UserController {
     public static getUserData: RequestHandler = async (req, res, next) => {

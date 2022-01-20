@@ -1,5 +1,5 @@
 import { action, observable } from "mobx";
-import { OnBoardingStage } from "../shared/model/general/enums";
+import {OnBoardingStage} from "shared/general/enums";
 
 export default class OnBoardingStore {
   @observable private _onBoardingStage: OnBoardingStage =

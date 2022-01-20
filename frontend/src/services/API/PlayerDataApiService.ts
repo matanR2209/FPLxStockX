@@ -1,6 +1,5 @@
 import {NetworkService} from "../NetworkService";
-import {ApiEndpoints, PlayersEndPoints} from "../../shared/model/network/enums";
-
+import {ApiEndpoints, PlayersEndPoints} from "shared/network/enums";
 
 export default class PlayerDataApiService {
     private static get basePath() {

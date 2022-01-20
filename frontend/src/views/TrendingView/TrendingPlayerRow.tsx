@@ -2,14 +2,12 @@ import React from "react";
 import {StyleRulesCallback, Theme, withStyles} from "@material-ui/core";
 import Utils from "../../Utils/Utils";
 import ColorsPalette from "../../assets/Colors";
-import {IPlayer} from "../../shared/model/player/types";
-
+import {IPlayer} from "shared/player/types";
 
 interface IProps {
     classes: any
     trendingPlayer: IPlayer
 }
-
 
 const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     trendingPlayerRowContainer: {

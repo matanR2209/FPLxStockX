@@ -11,7 +11,6 @@ import RelatedPlayers from "../RelatedPlayersView/RelatedPlayers";
 import UserApiService from "../../services/API/UserApiService";
 import {stores} from "../../state";
 
-
 interface IProps {
     classes: any;
 }
@@ -60,7 +59,6 @@ const userStore = stores.userStore;
 
 function AppContent(props: IProps) {
     const { classes } = props;
-
     useEffect(() => {
         (async () => {
             const response = await UserApiService.getUserInfo("userTestId");

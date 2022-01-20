@@ -1,0 +1,14 @@
+{
+  "name": "FPLxStocks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matanR2209/FPLxStockX.git",
+  "author": "MatanR <matan@salaryo.com>",
+  "license": "MIT",
+  "scripts": {
+    "shared:upgrade": "cd frontend && yarn shared:upgrade && cd ../backend yarn shared:upgrade"
+  },
+  "dependencies": {
+    "tsc": "^2.0.4"
+  }
+}

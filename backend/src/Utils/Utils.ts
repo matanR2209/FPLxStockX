@@ -1,5 +1,4 @@
-import {IStatsHistory} from "../shared/model/player/types";
-
+import {IStatsHistory} from "../../../shared/src/player/types";
 
 export default class Utils {
     public static generateRandomHistoryStats = (): IStatsHistory[] => {

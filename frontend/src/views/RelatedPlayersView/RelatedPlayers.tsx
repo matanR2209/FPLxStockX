@@ -7,7 +7,7 @@ import {Observer} from "mobx-react";
 import {stores} from "../../state";
 import Loader from "../../components/Loader";
 import {autorun} from "mobx";
-import {IPlayer} from "../../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 interface IProps {
     classes: any

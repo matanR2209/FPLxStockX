@@ -1,7 +1,7 @@
 import { computed, observable } from "mobx";
 import { ISelectItem } from "../components/FPLSSelect";
-import { ITeam } from "../shared/model/team/types";
 import TEAMS from "../assets/TEAMS";
+import {ITeam} from "shared/team/types";
 
 export default class TeamsStore {
   @observable public teams: ITeam[] = [];

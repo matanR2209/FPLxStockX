@@ -3,7 +3,8 @@ const cors = require('cors');
 import updatePlayersInfo from "./actions/updatePlayersInfo";
 import playersRouter from "./api/routers/playersRouter";
 import userRouter from "./api/routers/userRouter";
-import {ApiEndpoints} from "./shared/model/network/enums";
+import {ApiEndpoints} from "../../shared/src/network/enums";
+
 
 
 const app = express();

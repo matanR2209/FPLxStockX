@@ -4,7 +4,7 @@ import {Theme} from "@material-ui/core";
 import ColorsPalette from "../../assets/Colors";
 import Utils from "../../Utils/Utils";
 import WatchListGraphView from "../GraphView/WatchListGraphView";
-import {IPlayer} from "../../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 interface IProps {
     classes: any

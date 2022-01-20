@@ -1,8 +1,8 @@
 import {RequestHandler} from "express";
-
 import {BootstrapStaticApiService} from "../services/bootstrapStaticApiService";
 import {PlayerService} from "../services/playerService";
-import {IStaticData} from "../shared/model/apiData/types";
+import {IStaticData} from "../../../shared/src/apiData/types";
+
 
 const updatePlayersInfo: RequestHandler = async (req, res, next) => {
     try {

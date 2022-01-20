@@ -2,8 +2,8 @@ import * as admin from "firebase-admin";
 import * as _ from 'lodash';
 import {firestore} from "../firestore/firestore";
 import {BootstrapStaticApiService} from "./bootstrapStaticApiService";
-import {IPlayer} from "../shared/model/player/types";
 import Utils from "../Utils/Utils";
+import {IPlayer} from "../../../shared/src/player/types";
 
 export class PlayerService {
     public static savePlayersData = async (players: IPlayer[]) => {

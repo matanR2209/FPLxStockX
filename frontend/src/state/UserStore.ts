@@ -1,5 +1,6 @@
 import { computed, observable } from "mobx";
-import { IUser } from "../shared/model/user/types";
+import {IUser} from "shared/user/types";
+
 
 export default class UserStore {
   @observable private _user: IUser | undefined;

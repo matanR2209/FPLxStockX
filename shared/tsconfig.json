@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "lib": ["es6"],
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "declaration": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es6",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "typeRoots": [ "./types", "./node_modules/@types"]
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}

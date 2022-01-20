@@ -1,7 +1,7 @@
 import { action, computed, observable } from "mobx";
 import { ISelectItem } from "../components/FPLSSelect";
 import PLAYERS from "../assets/PLAYERS";
-import { IPlayer } from "../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 export default class PlayersStore {
   @observable private _selectedPlayer: IPlayer = PLAYERS[0];

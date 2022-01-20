@@ -1,6 +1,6 @@
 import {NetworkService} from "../NetworkService";
-import {IAddPlayerToWatchlistRequestBody} from "../../shared/model/network/types";
-import {ApiEndpoints, UserApiEndpoints} from "../../shared/model/network/enums";
+import {ApiEndpoints, UserApiEndpoints} from "shared/network/enums";
+import {IAddPlayerToWatchlistRequestBody} from "shared/network/types";
 
 export default class UserApiService {
     private static get basePath() {

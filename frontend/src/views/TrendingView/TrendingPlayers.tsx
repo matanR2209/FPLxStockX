@@ -4,7 +4,7 @@ import TrendingPlayerRow from "./TrendingPlayerRow";
 import ColorsPalette from "../../assets/Colors";
 import PlayerDataApiService from "../../services/API/PlayerDataApiService";
 import Loader from "../../components/Loader";
-import {IPlayer} from "../../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 interface IProps {
     classes: any

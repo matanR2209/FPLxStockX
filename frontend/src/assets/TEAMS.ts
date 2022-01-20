@@ -1,4 +1,4 @@
-import { ITeam } from "../shared/model/team/types";
+import {ITeam} from "shared/team/types";
 
 const TEAMS: ITeam[] = [
   {

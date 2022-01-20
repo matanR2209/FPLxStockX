@@ -6,7 +6,7 @@ import {stores} from "../../state";
 import {Observer} from "mobx-react"
 import ColorsPalette from "../../assets/Colors";
 import UserApiService from "../../services/API/UserApiService";
-import {IPlayer} from "../../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 interface IProps {
     classes: any

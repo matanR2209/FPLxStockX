@@ -1,6 +1,6 @@
 import { stores } from "../state";
-import { IPlayer } from "../shared/model/player/types";
-import {PlayerPositionsByName} from "../shared/model/player/enums";
+import {PlayerPositionsByName} from "shared/player/enums";
+import {IPlayer} from "shared/player/types";
 
 export default class Utils {
   public static getPlayerTrend = (trendingPlayer: IPlayer) => {

@@ -1,4 +1,4 @@
-import { IPlayer } from "../shared/model/player/types";
+import {IPlayer} from "shared/player/types";
 
 const PLAYERS: IPlayer[] = [
   {

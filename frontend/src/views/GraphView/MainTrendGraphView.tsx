@@ -1,10 +1,10 @@
 import React from "react";
 import MainTrendGraph from "../../components/graph/MainTrendGraph";
-import {IPlayerStatsHistory} from "../../shared/model/player/types";
 import {autorun} from "mobx";
 import PlayerDataApiService from "../../services/API/PlayerDataApiService";
 import {stores} from "../../state";
 import Loader from "../../components/Loader";
+import {IPlayerStatsHistory} from "shared/player/types";
 
 interface IProps {}
 
