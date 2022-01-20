@@ -7,14 +7,15 @@ In order to run the project please make sure the following software is installed
 - Node.js Version 10+
 - Yarn 1+
 
-
+setting up the project:
+ - on root folder run "yarn shared:upgrade"
   
 To run the FE:  
  - cd frontend
  - yarn
  - yarn start
  
- To run the BE:  
+ To run the BE:
  - cd backend
  - yarn
  - yarn start
