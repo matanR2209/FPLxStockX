@@ -6,7 +6,8 @@ export enum ApiEndpoints {
 export enum PlayersEndPoints {
     Trending = "/trending",
     Related = "/related",
-    GetPlayer = "/getPlayer"
+    GetPlayer = "/getPlayer",
+    Stats = "/stats",
 }
 
 export enum UserApiEndpoints {

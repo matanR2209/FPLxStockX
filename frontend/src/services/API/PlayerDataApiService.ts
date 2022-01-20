@@ -21,4 +21,9 @@ export default class PlayerDataApiService {
         const url = `${PlayerDataApiService.basePath}${ApiEndpoints.Players}${PlayersEndPoints.Related}/${selectedPlayerId}` ;
         return NetworkService.get(url)
     }
+
+    public static getPlayerHistoryStats = (selectedPlayerId: number) => {
+        const url = `${PlayerDataApiService.basePath}${ApiEndpoints.Players}${PlayersEndPoints.Stats}/${selectedPlayerId}` ;
+        return NetworkService.get(url)
+    }
 }

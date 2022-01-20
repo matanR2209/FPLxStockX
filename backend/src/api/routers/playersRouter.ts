@@ -9,6 +9,8 @@ playerRouter.route(`${PlayersEndPoints.GetPlayer}/:playerId` ).get(PlayersContro
 
 playerRouter.route(`${PlayersEndPoints.Related}/:playerId`).get(PlayersController.getRelatedPlayers);
 
+playerRouter.route(`${PlayersEndPoints.Stats}/:playerId`).get(PlayersController.getPlayerStats);
+
 playerRouter.route(PlayersEndPoints.Trending).get(PlayersController.getTrendingPlayers);
 
 export default playerRouter;

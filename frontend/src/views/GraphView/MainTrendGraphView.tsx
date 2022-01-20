@@ -1,31 +1,30 @@
 import React from "react";
 import MainTrendGraph from "../../components/graph/MainTrendGraph";
-import {IPlayerStatsHistory, IStatsHistory} from "../../shared/model/player/types";
+import {IPlayerStatsHistory} from "../../shared/model/player/types";
+import {autorun} from "mobx";
+import PlayerDataApiService from "../../services/API/PlayerDataApiService";
+import {stores} from "../../state";
+import Loader from "../../components/Loader";
 
 interface IProps {}
 
-function MainTrendGraphView(props: IProps) {
-    const generateRandomHistoryStats = (): IStatsHistory[] => {
-        const res:  IStatsHistory[] = [];
-        let now = new Date();
-        for(let i = 0; i < 10; i++) {
-            res.push({
-                amount: Math.floor(Math.random() * (10000 - 1000) + 1000),
-                date: now.setDate(now.getDate() + i * 7)
-            })
-        }
-        return res
-    }
+const playersStore = stores.playersStore
 
-    const generateRandomStats = (): IPlayerStatsHistory => {
-        return {
-            points: generateRandomHistoryStats(),
-            transferIn: generateRandomHistoryStats(),
-            transferOut: generateRandomHistoryStats(),
-            totalOwners: generateRandomHistoryStats()
-        }
-    }
-    return <MainTrendGraph playerStats={generateRandomStats()}/>;
+function MainTrendGraphView(props: IProps) {
+    const [selectedPlayerStats, setSelectedPlayerStats] = React.useState<IPlayerStatsHistory | undefined>(undefined);
+
+    React.useEffect(
+        () =>
+            autorun(async () => {
+                const response = await PlayerDataApiService.getPlayerHistoryStats(playersStore.selectedPlayer.id);
+                if(response.ok && response.data) {
+                    setSelectedPlayerStats(response.data);
+                } else {
+                    console.error("Whhhops, somthing went wrong");
+                }
+            }),
+        [],)
+    return selectedPlayerStats? <MainTrendGraph playerStats={selectedPlayerStats}/> : <Loader/>;
 }
 
 
