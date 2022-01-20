@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import {firestore} from "../firestore/firestore";
 import {BootstrapStaticApiService} from "./bootstrapStaticApiService";
 import {IPlayer} from "../shared/model/player/types";
+import Utils from "../Utils/Utils";
 
 export class PlayerService {
     public static savePlayersData = async (players: IPlayer[]) => {
@@ -47,14 +48,29 @@ export class PlayerService {
         });
     }
 
+    // TODO: implement trending players logic
     public static getTrendingPlayers = async () => {
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 10)
     }
 
+    // TODO: implement related players logic
     public static getRelatedPlayers = async (playerId: string) => {
         console.log(`get players related to: ${playerId}`);
         const response = await BootstrapStaticApiService.getStaticData();
         return _.sampleSize(response.elements, 6)
     }
+
+    // TODO: implement Player stats fetching from DB
+    public static getPlayerStats = async (playerId: string) => {
+        console.log(`Get stats for ${playerId}`);
+        return {
+            points: Utils.generateRandomHistoryStats(),
+            transferIn: Utils.generateRandomHistoryStats(),
+            transferOut: Utils.generateRandomHistoryStats(),
+            totalOwners: Utils.generateRandomHistoryStats(),
+        }
+    }
+
+
 }
