@@ -1,12 +1,13 @@
 import React, {useEffect} from "react";
 import {StyleRulesCallback, withStyles} from "@material-ui/core/styles";
 import {Button, Theme} from "@material-ui/core";
-import FPLSSelect  from "../../components/FPLSSelect";
+import FPLSSelect from "../../components/FPLSSelect";
 import {stores} from "../../state";
-import { Observer } from "mobx-react"
+import {Observer} from "mobx-react"
 import ColorsPalette from "../../assets/Colors";
 import UserApiService from "../../services/API/UserApiService";
 import {IPlayer} from "../../shared/model/player/types";
+import {OnBoardingStage} from "../../shared/model/general/enums";
 
 interface IProps {
     classes: any
@@ -37,12 +38,18 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
     buttonContainer: {
         display: "flex",
         margin: "auto 0"
+    },
+    onBoardingHighlight: {
+        zIndex: 11,
+        padding: ".5em",
+        backgroundColor: ColorsPalette.lightGrey
     }
 });
 
 const teamsStore = stores.teamsStore;
 const playersStore = stores.playersStore;
 const userStore = stores.userStore;
+const onBoardingStore = stores.onBoardingStore;
 
 const PlayerSelectionControl = (props: IProps) => {
     const { classes } = props;
@@ -86,8 +93,9 @@ const PlayerSelectionControl = (props: IProps) => {
         </>)
     }
 
+
     return (<Observer>
-            {() => {return <div className={classes.root}>
+            {() => {return <div className={`${classes.root} ${onBoardingStore.isOnComponentHighlighted(OnBoardingStage.PlayerControl)? classes.onBoardingHighlight: {}} `}>
                 {renderControllers()}
                 {renderSelectedPlayerHeaderAndActions()}
             </div>}}

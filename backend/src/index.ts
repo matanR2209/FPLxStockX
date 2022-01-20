@@ -21,5 +21,3 @@ app.use(ApiEndpoints.User, userRouter)
 app.listen(3001, () => {
     console.log('The application is listening on port 3001!');
 })
-
-

@@ -5,6 +5,9 @@ import ColorsPalette from "../../assets/Colors";
 import PlayerDataApiService from "../../services/API/PlayerDataApiService";
 import Loader from "../../components/Loader";
 import {IPlayer} from "../../shared/model/player/types";
+import {OnBoardingStage} from "../../shared/model/general/enums";
+import {stores} from "../../state";
+import {Observer} from "mobx-react";
 
 interface IProps {
     classes: any
@@ -34,8 +37,15 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         top:0,
         position:"absolute",
         width: "100%"
+    },
+    onBoardingHighlight: {
+        zIndex: 11,
+        padding: ".5em",
+        backgroundColor: ColorsPalette.white
     }
 });
+
+const onBoardingStore = stores.onBoardingStore;
 
 function TrendingPlayers(props: IProps) {
     const { classes } = props;
@@ -53,17 +63,17 @@ function TrendingPlayers(props: IProps) {
 
     const renderTrendingPlayers = () => {
         return (<div className={classes.trendingListContainer}>
-                    <div >
                     {trendingPlayers.map(player => <TrendingPlayerRow key={player.id} trendingPlayer={player}/> )}
-                </div>
             </div>
         )
     }
 
-    return (<div className={classes.root}>
-                <div className={classes.header}>Trending</div>
-                {trendingPlayers.length > 0? renderTrendingPlayers() :<Loader/> }
-            </div>);
+    return (<Observer>
+        {() => {return (<div className={`${classes.root} ${onBoardingStore.isOnComponentHighlighted(OnBoardingStage.Trending)? classes.onBoardingHighlight: {}} `}>
+            <div className={classes.header}>Trending</div>
+            {trendingPlayers.length > 0? renderTrendingPlayers() :<Loader/> }
+        </div>)}}
+    </Observer>)
 }
 
 export default withStyles(styles)(TrendingPlayers);

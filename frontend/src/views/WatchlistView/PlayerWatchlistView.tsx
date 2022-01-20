@@ -24,7 +24,6 @@ const styles: StyleRulesCallback<any, any> = (theme: Theme) => ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        cursor: "pointer",
         "&:hover": {
             boxShadow: HOVER_BOX_SHADOW,
             opacity: "0.7!important"
