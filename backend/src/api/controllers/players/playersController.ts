@@ -30,14 +30,4 @@ export default class PlayersController {
             console.log(e);
         }
     }
-
-    public static getPlayerStats: RequestHandler = async (req, res, next) => {
-        try {
-            const { playerId } = req.params;
-            const playerStats = await PlayerService.getPlayerStats(playerId);
-            res.json({ok: true, data: playerStats});
-        } catch (e) {
-            console.log(e);
-        }
-    }
 }
