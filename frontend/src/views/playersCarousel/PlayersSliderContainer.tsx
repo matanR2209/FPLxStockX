@@ -3,7 +3,7 @@ import {withStyles} from "@material-ui/core/styles";
 import {Theme } from "@material-ui/core";
 import ItemsCarousel from "../../components/ItemsCarousel";
 import CarouselPlayerViewItem from "./CarouselPlayerViewItem";
-import {IPlayer} from "shared/player/types";
+import {IPlayer} from "../../shared/model/player/types";
 
 interface IProps {
     classes: any
