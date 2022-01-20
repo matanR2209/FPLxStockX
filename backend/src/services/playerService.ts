@@ -6,11 +6,11 @@ import {IPlayer} from "../shared/model/player/types";
 import Utils from "../Utils/Utils";
 
 export class PlayerService {
-
     public static savePlayersData = async (players: IPlayer[]) => {
         players.forEach( (player: IPlayer) => {
             PlayerService.savePlayersBasicInfo(player);
             PlayerService.updatePlayerTransfersStatistics(player);
+
         });
     }
 
