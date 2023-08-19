@@ -15,6 +15,7 @@ export default class Utils {
   };
 
   public static getPlayerPositionName = (position: number) => {
+    console.log(position);
     switch (position) {
       case 1: return PlayerPositionsByName.Goalkeeper;
       case 2: return PlayerPositionsByName.Defender;
